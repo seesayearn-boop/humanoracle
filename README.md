@@ -176,17 +176,15 @@ Discover tools at `https://api.loopuman.com/.well-known/mcp.json` and use the `c
 
 | Metric | Value |
 |--------|-------|
-| 8004scan Rank | #9 Global, #1 on Celo |
-| Overall Score | 85+ / 100 |
+| 8004scan Rank | #7 Global, #1 on Celo |
+| Overall Score | 85.7 / 100 |
 | Total Feedback | 33+ |
 | Average Score | 4.5 / 5.0 |
 | Endpoints | MCP ✅ A2A ✅ |
 
 ### Links
-
 - 🤖 **Agent**: https://www.8004scan.io/agents/celo/17    
 - 🔗 **Karma**: [karmahq.xyz/project/humanoracle](https://www.karmahq.xyz/project/humanoracle)
-- 🔗 Karma: karmahq.xyz/project/humanoracle
 - 🌐 **Website**: [loopuman.com](https://loopuman.com)
 - ⛓️ **CeloScan**: [Mint TX](https://celoscan.io/tx/0x7f82950e815b81c64c7ab8f682ec9fa0269b9ca0aa550027734863ffb2860b5f)
 - 🐦 **Twitter**: [@loopuman](https://x.com/loopuman)
@@ -194,7 +192,6 @@ Discover tools at `https://api.loopuman.com/.well-known/mcp.json` and use the `c
 ---
 
 ## 🗺️ Roadmap
-
 - [x] ERC-8004 identity registration on Celo
 - [x] SelfClaw passport verification
 - [x] MCP + A2A protocol endpoints
@@ -209,6 +206,43 @@ Discover tools at `https://api.loopuman.com/.well-known/mcp.json` and use the `c
 - [ ] Multi-language support (20+ languages)
 - [ ] Enterprise dashboard & analytics
 - [ ] Mobile app for workers
+
+---
+
+## 🔌 OpenClaw / MCP Integration
+
+Loopuman is fully compatible with any MCP client including [OpenClaw](https://openclaw.ai), Google ADK, and Microsoft Agent Framework.
+
+### Quick Setup
+```yaml
+mcp:
+  - name: loopuman
+    url: https://api.loopuman.com/.well-known/mcp.json
+```
+
+### Authentication
+```bash
+# Register for API key (free)
+curl -X POST https://api.loopuman.com/api/v1/register \
+  -H "Content-Type: application/json" \
+  -d '{"email": "you@example.com", "company_name": "Your Company"}'
+```
+
+### Example: AI → Human Fallback
+```python
+# When AI confidence is low, escalate to human
+if confidence < 0.85:
+    result = loopuman.create_task(
+        description="Verify if this image contains a cat",
+        budget_vae=50,
+        category="image"
+    )
+```
+
+### Budget Guide
+- 100 VAE = $1 USD
+- Minimum task budget: 50 VAE ($0.50)
+- Workers paid instantly in cUSD on Celo blockchain
 
 ---
 
